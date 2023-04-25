@@ -17,9 +17,11 @@
     "next": "13.3.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "swiper": "^9.2.4",
     "typescript": "5.0.4"
   },
   "devDependencies": {
-    "sass": "^1.62.0"
+    "sass": "^1.62.0",
+    "typescript-plugin-css-modules": "^5.0.1"
   }
 }

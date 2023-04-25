@@ -1,3 +1,11 @@
 @import "colors";
-@import "mixins";
-@import "variables";
+// @import "mixins";
+// @import "variables";
+// @import "reset";
+
+// root
+
+:root {
+  background: $secondary-dark;
+  color: $color-light;
+}
