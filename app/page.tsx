@@ -16,7 +16,7 @@ export default function Page() {
 
   return (
     <main className={styles.wrapper} ref={ref}>
-      <Swiper
+      {/* <Swiper
         direction={"vertical"}
         pagination={{
           clickable: true,
@@ -31,7 +31,7 @@ export default function Page() {
             </SwiperSlide>
           );
         })}
-      </Swiper>
+      </Swiper> */}
     </main>
   );
 }
