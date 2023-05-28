@@ -1,22 +1,49 @@
 "use client";
-import React from "react";
-import Navigation from "./navigation";
-
+import { menus } from "@/lib/menus";
+import { motion } from "framer-motion";
+import { lowerCase } from "lodash";
+import Link from "next/link";
+import React, { useEffect } from "react";
+import { MenuItem } from "./menu-group";
 export default function Boundary({ children }: { children: React.ReactNode }) {
   const [isActive, setIsActive] = React.useState(false);
-  const boundaryRef = React.useRef<HTMLDivElement>(null);
-  React.useEffect(() => {
-    isActive
-      ? boundaryRef.current?.classList.toggle("boundary--active")
-      : boundaryRef.current?.classList.remove("boundary--active");
-  }, [isActive]);
+
+  useEffect(() => {
+    window.onhashchange = () => {
+      setIsActive(true);
+      if (window.location.hash.length > 1) {
+        setIsActive(false);
+      } else {
+        setIsActive(true);
+      }
+    };
+  }, []);
   return (
-    <div className="boundary" ref={boundaryRef}>
-      <Navigation isActive={isActive} />
-      <div className="boundary-item">{children}</div>
-      <button onClick={() => setIsActive(!isActive)}>
-        {isActive.toString()}
-      </button>
+    <div
+      className="boundary"
+      style={isActive ? { flexDirection: "column" } : { flexDirection: "row" }}
+    >
+      <div
+        className="boundary-nav-wrapper"
+        style={
+          isActive ? { flexDirection: "row" } : { flexDirection: "column" }
+        }
+      >
+        {menus.map((menu, index) => (
+          <MenuItem item={menu} key={index} />
+        ))}
+      </div>
+      <div className="boundary-section">{children}</div>
     </div>
+  );
+}
+
+function MenuItem({ item }: { item: MenuItem }) {
+  return (
+    <motion.div layout transition={{ type: "tween" }} className="boundary-item">
+      <Link className="nav-item" href={`#${item.section}`}>
+        {item.name}
+      </Link>
+    </motion.div>
   );
 }

@@ -10,22 +10,28 @@
   color: $color-light;
   height: 100%;
   width: 100%;
-  display: flex;
 }
 body {
   margin: auto;
-  height: 100%;
+  height: 100vh;
   flex-grow: 1;
   max-width: 100rem;
-  max-height: 56.25rem;
-  display: flex;
-  flex-direction: column;
+  overflow: hidden;
 }
 .boundary {
   flex: 1;
   display: flex;
-  flex-direction: column;
+  &-nav-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
   &-item {
+    display: grid;
+    place-items: center;
+    flex: 1;
+  }
+  &-section {
     flex: 8;
   }
   &--active {
@@ -33,7 +39,30 @@ body {
     align-items: stretch;
   }
 }
+.motion-box {
+  width: 100px;
+  height: 100px;
+  border: 1px solid greenyellow;
+}
 .nav {
+  display: flex;
+
+  &-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: $color-light;
+    &:active {
+      color: $color-light;
+    }
+    &:visited {
+      color: $color-light;
+    }
+  }
   &-top {
     &-wrapper {
       max-height: 12.5rem;
@@ -47,7 +76,6 @@ body {
   }
   &-side {
     &-wrapper {
-      border: 1px solid red;
       flex: 2;
       width: 100%;
       height: 100%;
@@ -58,37 +86,4 @@ body {
       align-items: center;
     }
   }
-}
-.background {
-  height: 100%;
-  width: 300px;
-  background: #fff;
-}
-
-.toggle {
-  position: absolute;
-  left: 15px;
-  top: 15px;
-  outline: none;
-  border: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  width: 50px;
-  height: 50px;
-  background: transparent;
-}
-.menulist {
-  padding: 25px;
-  position: absolute;
-  top: 100px;
-  width: 230px;
-}
-.pageWrapper {
-  height: 100%;
-  width: 100%;
-  position: relative;
-  display: flex;
 }

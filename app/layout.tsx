@@ -17,7 +17,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           crossOrigin="anonymous"
         />
       </Head>
-      <body style={{ border: "1px solid red" }}>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }

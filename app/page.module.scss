@@ -1,28 +1,15 @@
 .wrapper {
-  height: 100%;
-  border: 1px solid salmon;
-}
-.container {
-  clear: both;
-}
-.swiper {
-  width: 100%;
-  height: 100%;
+  height: 100vh;
+  overflow-y: hidden;
 }
 
-.swiperSlide {
-  text-align: center;
-  font-size: 18em;
-
-  /* Center slide text vertically */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.swiper-slide img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.main {
+  &-section {
+    height: 100%; // 브라우저 높이와 같게 설정
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    color: white;
+  }
 }

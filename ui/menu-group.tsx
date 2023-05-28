@@ -7,6 +7,7 @@ export type MenuItem = {
   name: string;
   icon?: string;
   slug?: string;
+  section?: string;
 };
 
 export default function MenuGroup({
