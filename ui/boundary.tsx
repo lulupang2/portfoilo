@@ -2,22 +2,13 @@
 import { menus } from "@/lib/menus";
 import { motion } from "framer-motion";
 import { lowerCase } from "lodash";
-import Link from "next/link";
+
 import React, { useEffect } from "react";
 import { MenuItem } from "./menu-group";
+import { sectionStore } from "@/store/section";
 export default function Boundary({ children }: { children: React.ReactNode }) {
-  const [isActive, setIsActive] = React.useState(false);
-
-  useEffect(() => {
-    window.onhashchange = () => {
-      setIsActive(true);
-      if (window.location.hash.length > 1) {
-        setIsActive(false);
-      } else {
-        setIsActive(true);
-      }
-    };
-  }, []);
+  const { order, name } = sectionStore();
+  const isActive = order <= 0 && true;
   return (
     <div
       className="boundary"
@@ -30,7 +21,12 @@ export default function Boundary({ children }: { children: React.ReactNode }) {
         }
       >
         {menus.map((menu, index) => (
-          <MenuItem item={menu} key={index} />
+          <MenuItem
+            item={menu}
+            key={index}
+            isSelected={order === index}
+            index={index}
+          />
         ))}
       </div>
       <div className="boundary-section">{children}</div>
@@ -38,16 +34,28 @@ export default function Boundary({ children }: { children: React.ReactNode }) {
   );
 }
 
-function MenuItem({ item }: { item: MenuItem }) {
+function MenuItem({
+  item,
+  isSelected,
+  index,
+}: {
+  item: MenuItem;
+  index: number;
+  isSelected: boolean;
+}) {
+  const { setSection } = sectionStore();
+  const handleClick = () => {
+    setSection(index, item.section!);
+  };
   return (
     <motion.div
       layout
       transition={{ type: "spring", bounce: 0.5 }}
       className="boundary-item"
+      style={isSelected ? { opacity: 1 } : { opacity: 0.5 }}
+      onClick={handleClick}
     >
-      <Link className="nav-item" href={`#${item.section}`}>
-        {item.name}
-      </Link>
+      <span className="nav-item">{item.name}</span>
     </motion.div>
   );
 }
