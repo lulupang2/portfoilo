@@ -6,7 +6,7 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import { MenuItem } from "./menu-group";
 export default function Boundary({ children }: { children: React.ReactNode }) {
-  const [isActive, setIsActive] = React.useState(true);
+  const [isActive, setIsActive] = React.useState(false);
 
   useEffect(() => {
     window.onhashchange = () => {
@@ -40,7 +40,11 @@ export default function Boundary({ children }: { children: React.ReactNode }) {
 
 function MenuItem({ item }: { item: MenuItem }) {
   return (
-    <motion.div layout transition={{ type: "tween" }} className="boundary-item">
+    <motion.div
+      layout
+      transition={{ type: "spring", bounce: 0.5 }}
+      className="boundary-item"
+    >
       <Link className="nav-item" href={`#${item.section}`}>
         {item.name}
       </Link>

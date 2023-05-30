@@ -4,12 +4,19 @@
 // @import "reset";
 
 // root
-
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
 :root {
   background: $secondary-dark;
   color: $color-light;
   height: 100%;
   width: 100%;
+  font-family: "Pretendard-Regular";
 }
 body {
   margin: auto;
@@ -25,11 +32,16 @@ body {
     display: flex;
     flex-direction: column;
     flex: 1;
+    min-height: 5rem;
   }
   &-item {
     display: grid;
     place-items: center;
     flex: 1;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+    &:hover {
+      background: #000;
+    }
   }
   &-section {
     flex: 8;
@@ -39,21 +51,9 @@ body {
     align-items: stretch;
   }
 }
-.motion-box {
-  width: 100px;
-  height: 100px;
-  border: 1px solid greenyellow;
-}
 .nav {
   display: flex;
-
   &-item {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
     text-decoration: none;
     color: $color-light;
     &:active {
@@ -61,29 +61,6 @@ body {
     }
     &:visited {
       color: $color-light;
-    }
-  }
-  &-top {
-    &-wrapper {
-      max-height: 12.5rem;
-      height: 100%;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      gap: 2rem;
-      align-items: center;
-    }
-  }
-  &-side {
-    &-wrapper {
-      flex: 2;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 2rem;
-      align-items: center;
     }
   }
 }
