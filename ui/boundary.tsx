@@ -6,7 +6,7 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import { MenuItem } from "./menu-group";
 export default function Boundary({ children }: { children: React.ReactNode }) {
-  const [isActive, setIsActive] = React.useState(false);
+  const [isActive, setIsActive] = React.useState(true);
 
   useEffect(() => {
     window.onhashchange = () => {
